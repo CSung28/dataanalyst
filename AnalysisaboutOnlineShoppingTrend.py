@@ -21,7 +21,7 @@ df1 = pd.read_excel('file_path/file_name.xlsx', sheet_name = 0)
 
 # check data that it was brought well
 df1
-
+ 
 # check the columns
 df1.columns
 
@@ -52,3 +52,37 @@ df1['월'] = df1['시점'].dt.month
 
 # check data 
 df1.columns
+
+# Theme 2. Analysis 22. 1. ~ 9.
+# I will write two codes about analysis that i did
+# (1) Computer
+
+sns.lineplot(x = '월', y = '컴퓨터 및 주변기기', data = df1)
+plt.title('컴퓨터 및 주변기기 거래액 총계')
+
+
+fig, ax = plt.subplots(ncols = 2, figsize = (20, 10))
+sns.lineplot(x = '월', y = '컴퓨터 및 주변기기.1', data = df1, ax = ax[0])
+ax[0].set_title('컴퓨터 및 주변기기 거래액(인터넷 쇼핑)')
+sns.lineplot(x = '월', y = '컴퓨터 및 주변기기.2', data = df1, ax = ax[1])
+ax[1].set_title('컴퓨터 및 주변기기 거래액(모바일 쇼핑)')
+plt.show()
+
+# (2) Dairy, Farm, Seafood
+
+fig = plt.figure(figsize = (10, 10))
+
+ax1 = fig.add_subplot(211)
+ax1.plot('월', '농축수산물', data = df1)
+ax1.set_title('농축수산물 거래액 총계', fontsize = 14)
+
+ax2 = fig.add_subplot(223)
+ax2.plot('월', '농축수산물.1', data = df1)
+ax2.set_title('농축수산물 거래액(인터넷 쇼핑)', fontsize = 14)
+
+ax3 = fig.add_subplot(224)
+ax3.plot('월', '농축수산물.2', data = df1)
+ax3.set_title('농축수산물 거래액(모바일 쇼핑)', fontsize = 14)
+
+plt.tight_layout()
+plt.show()
